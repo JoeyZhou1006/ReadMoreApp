@@ -1,20 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from 'reactstrap';
 import { AuthConsumer } from '../AuthContext';
+import UserAuthContext from '../UserAuthContext';
 /**
  * Navigation component which will display the navigation bar on the top so the user can navigate between different sites
  */
-class NavigationBar extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = { isSignIn: false };
-    }
 
-    render() {
-        return (
-            <AuthConsumer> 
-             {({ isAuth, login, logout }) => ( 
-                <nav className="navbar navbar-expand-lg navbar-light bg-light">
+const  NavigationBar = () => {
+
+    const [userSignedIn, setUserSignOut] = useState(false)
+//const { setUserSignIn, setUserSignOut } = useContext(UserAuthContext)
+
+    return  <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <a className="navbar-brand" href="#">Read More Web App</a>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
@@ -30,33 +27,13 @@ class NavigationBar extends React.Component {
                     </li>
                     </ul>
                     <span>
-
-                {
-                    isAuth? 
-                    (
-                        <Button color="primary" href="/signin">
-                        Sign Out 
-                        </Button>
-
-                    ): (
                         <Button color="primary" href="/signOut">
                         Sign In 
                         </Button>
 
-                    )
-                }
                     </span>
                 </div>
-                </nav>
-            )
-            }  
-            </AuthConsumer> 
-        )
-    }
-
-
+        </nav>
 }
 
-
-  
-  export default NavigationBar;
+export default NavigationBar;

@@ -2,20 +2,6 @@
 import React from 'react';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import firebase from 'firebase';
-import { Redirect } from 'react-router-dom';
-import { AuthConsumer } from '../AuthContext';
-
-
-// Configure Firebase.
-const config = {
-    apiKey: "AIzaSyBTDXQXbZsiKxG8AiVM_nkfD2iFZsAwEuE",
-    authDomain: "login-web-7c299.firebaseapp.com",
-    databaseURL: "https://login-web-7c299.firebaseio.com",
-    projectId: "login-web-7c299",
-    storageBucket: "",
-    messagingSenderId: "470909464333",
-    appId: "1:470909464333:web:3c9b885465bc5a9f"
-};
 
 class SignIn extends React.Component {
 
