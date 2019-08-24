@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { Button } from 'reactstrap';
-import { AuthConsumer } from '../AuthContext';
 import UserAuthContext from '../UserAuthContext';
 /**
  * Navigation component which will display the navigation bar on the top so the user can navigate between different sites
@@ -8,9 +7,10 @@ import UserAuthContext from '../UserAuthContext';
 
 const  NavigationBar = () => {
 
-    const [userSignedIn, setUserSignOut] = useState(false)
-//const { setUserSignIn, setUserSignOut } = useContext(UserAuthContext)
+    const { userSignedIn, setUserSignIn } = useContext(UserAuthContext)
 
+    setUserSignIn();
+    console.log(userSignedIn);
     return  <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <a className="navbar-brand" href="#">Read More Web App</a>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,7 +27,7 @@ const  NavigationBar = () => {
                     </li>
                     </ul>
                     <span>
-                        <Button color="primary" href="/signOut">
+                        <Button href="/signin">
                         Sign In 
                         </Button>
 

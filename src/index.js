@@ -1,16 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-//import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.css';
 import SignIn from './components/SignIn';
 import RegisteredUsers from './components/RegisteredUsers';
-import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom'
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 import NotFound from './components/NotFound';
 import NavigationBar from './components/NavigationBar';
 import Article from './components/Article';
-import { AuthProvider }  from './AuthContext';
+import { AuthProvider } from './AuthContext';
 
 const App = () => (
     <div>

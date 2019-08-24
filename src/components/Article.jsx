@@ -1,21 +1,9 @@
 import React from 'react';
-import '../assets/css/custom.css';
 import {Button} from 'reactstrap';
 import firebase from 'firebase';
 import { Redirect } from 'react-router-dom';
-
 import { AuthConsumer } from '../AuthContext';
-
-// Configure Firebase.
-const config = {
-    apiKey: "AIzaSyBTDXQXbZsiKxG8AiVM_nkfD2iFZsAwEuE",
-    authDomain: "login-web-7c299.firebaseapp.com",
-    databaseURL: "https://login-web-7c299.firebaseio.com",
-    projectId: "login-web-7c299",
-    storageBucket: "",
-    messagingSenderId: "470909464333",
-    appId: "1:470909464333:web:3c9b885465bc5a9f"
-};
+import config from '../config';
 firebase.initializeApp(config);
 
 /**
@@ -35,31 +23,6 @@ class Article extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-
-    // Listen to the Firebase Auth state and set the local state.
-    componentDidMount() {
-        //Remove read more button
-
-
-    }
-
-    // Make sure we un-register Firebase observers when the component unmounts.
-    componentWillUnmount() {
-
-    }
-
-    componentDidUpdate(){
-
-    }
-    
-
-    componentWillMount(){
-        var user = firebase.auth().currentUser;
-        console.log(user);
-        console.log('it will mount');
-
-    }
-
     handleSubmit () {
         this.setState({ redirect: true });
     }
@@ -76,7 +39,7 @@ class Article extends React.Component {
             <AuthConsumer> 
                 {({ isAuth, login, logout }) => (
                 <div> 
-                    <span>
+                    <div>
                     <p>
                     Adelaide (/ˈædəleɪd/ (About this soundlisten) AD-ə-layd)[8] is the capital city of the state of South Australia, and the fifth-most populous city of Australia. Adelaide is home to 77 percent of the South Australian population, making it the most centralised population of any state in Australia.
 
@@ -88,7 +51,8 @@ class Article extends React.Component {
 
     Adelaide is noted for its many festivals and sporting events, its food and wine, its long beachfronts, and its large defence and manufacturing sectors. Its quality of life has ranked highly in various measures through the 2010s. The demonym "Adelaidean" is used in reference to the city and its residents.
                     </p> 
- 
+                    </div>
+                    <div>
                     {
                         isAuth?
                         (
@@ -96,15 +60,15 @@ class Article extends React.Component {
 
                         ): (
                                         
-                        <Button color="primary" onClick={this.handleSubmit}>
+                        <Button onClick={this.handleSubmit}>
                             Read More
                         </Button>  
 
                         )
 
                     }
-
-                    </span>
+                    </div>
+                 
                 </div>
             )}
             </AuthConsumer> 
