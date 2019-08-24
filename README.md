@@ -11,5 +11,14 @@ How to run this app:
 Technologies used:
 React.js + firebase
 
+
+Functionality supported:
+1. Display the page shows the content
+2. Redirect  for authentication using google or email 
+3. Integration of react.js with firebase authentication
+4. Third-party libraries integration for great authentication experience
+5. Navigation bar for redirecting between different pages
+6. Email verifications through firebase
+
 Things to note:
 Recently, i started to explore react.js, as it is an emerging and powerful technology, before developing the development of this app, i only had some basic knowledge of it, however with the development went along, i learnt more and more techniques, like react hooks, react router, navigation bar, some state management
