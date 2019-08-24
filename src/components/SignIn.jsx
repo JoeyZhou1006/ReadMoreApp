@@ -2,8 +2,7 @@
 import React, { useState , useContext } from 'react';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import firebase from 'firebase';
-import UserAuthContext from '../UserAuthContext';
-import UserAuthContextProvider from '../UserAuthContextProvider';
+
 
 
 /**
@@ -43,10 +42,10 @@ const  SignIn = () => {
   };
 
   return (
-		<UserAuthContextProvider>
+		<div>
 			<h1 className="text-center">Please Sign In / Sign Up here</h1>
 			<StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()}/>      
-		</UserAuthContextProvider>
+		</div>
 
       );
   }
