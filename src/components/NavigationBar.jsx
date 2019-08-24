@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from 'reactstrap';
-
+import { AuthConsumer } from '../AuthContext';
 /**
  * Navigation component which will display the navigation bar on the top so the user can navigate between different sites
  */
@@ -8,42 +8,49 @@ class NavigationBar extends React.Component {
     constructor(props){
         super(props);
         this.state = { isSignIn: false };
-        this.UserAuthenticate = this.UserAuthenticate.bind(this);
-    }
-
-    /**
-     * Function to handle user sign-in/sign-out event
-     */
-    UserAuthenticate() {
-        this.setState(state=> ({
-            isSignIn: !state.isSignIn
-        }));
-        
     }
 
     render() {
         return (
-                <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="#">Read More Web App</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+            <AuthConsumer> 
+             {({ isAuth, login, logout }) => ( 
+                <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                <a className="navbar-brand" href="#">Read More Web App</a>
+                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarText">
-                    <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+
+                <div className="collapse navbar-collapse" id="navbarText">
+                    <ul className="navbar-nav mr-auto">
+                    <li className="nav-item active">
+                        <a className="nav-link" href="/">Home <span className="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Registered Emails</a>
+                    <li className="nav-item">
+                        <a className="nav-link" href="/registeredusers">Registered Emails</a>
                     </li>
                     </ul>
                     <span>
-                    <Button color="primary" onClick={this.UserAuthenticate}>
-                        {this.state.isSignIn ? 'Sign out' : 'Sign in'} 
-                    </Button>
+
+                {
+                    isAuth? 
+                    (
+                        <Button color="primary" href="/signin">
+                        Sign Out 
+                        </Button>
+
+                    ): (
+                        <Button color="primary" href="/signOut">
+                        Sign In 
+                        </Button>
+
+                    )
+                }
                     </span>
                 </div>
                 </nav>
+            )
+            }  
+            </AuthConsumer> 
         )
     }
 
